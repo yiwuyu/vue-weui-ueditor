@@ -1,0 +1,276 @@
+.weui_editor
+	.weui_edui_wrap
+		.weui_editor_hd
+			position: relative
+			z-index: 2
+			background-color: #fff
+			width: 100%
+			.weui_toolbar_box
+				background-color: #fff
+				position: relative
+				border 1px solid #e7e7eb
+				.weui__box_wrap
+					margin: 2px
+					position: relative
+					
+					.weui__box_inner
+						position: relative
+						padding: 5px 15px
+						margin-bottom: -1px
+						background-color: #fff
+						
+						.weui_toolbar
+							text-align: left
+							padding: 5px 0
+							
+							.toolitem
+								position: relative
+								display: inline-block
+								margin: 0 1px
+								.weui_tooltip
+									border: 1px solid transparent
+									&:hover, &.checked
+										border-color: #e7e7eb
+								.weui_edui_button
+									border: none
+									padding: 0
+									background-color: #fff
+									&:focus
+										outline: none
+									&:disabled
+										opacity: .3
+								.weui_edui_icon
+									display: inline-block
+									vertical-align: middle
+									background-image: url(//unpkg.com/vue-weui-ueditor/static/themes/default/images/ueditor_z29f4d5.png)
+									background-repeat: no-repeat
+									width: 20px
+									height: 20px
+								.triangle
+									display: block
+									width: 0
+									height: 0
+									border-right: 3px solid transparent
+									border-left: 3px solid transparent
+									border-top: 4px solid #888
+									&:hover
+										border-top-color: #666
+								&.toolcolorpicker, &.toolselect, &.toolinput
+									.weui_edui_select
+										padding: 0
+										padding-right: 5px
+								.colorbar
+									position: absolute
+									left: 3px
+									bottom: 1px
+									width: 13px
+									height: 3px
+								.weui_edui_toolpicker_panel, .weui_edui_toolselect_list
+									position: absolute
+									left: 0
+									_width: 150px
+									min-width: 170px
+									border: 1px solid #e7e7eb
+									background-color: #fff
+									z-index: 40
+								/* toolpicker */
+								.weui_edui_toolpicker_panel
+									width: 258px
+									height: 310px
+									padding: 20px
+									box-sizing: border-box
+
+									button
+										outline: none
+										box-sizing: border-box
+
+									.color_box
+										.title
+											color: #8d8d8d
+											font-size: 13px
+											margin: 10px 0
+
+										button
+											width: 20px
+											height: 20px
+											margin: 0 4px 4px 0
+											border: 1px solid #e7e7eb
+											cursor: pointer
+										
+										.clear
+											background: url(//unpkg.com/vue-weui-ueditor/static/themes/default/images/ueditor_z29f4d5.png) 0 -1070px no-repeat
+											background-color: transparent
+											border: none
+									.input_color
+										margin: 10px 0
+										padding-top: 10px
+										border-top: 1px solid #e7e7eb
+
+										.input_wrap
+											display: inline-block
+											vertical-align: middle
+											position: relative
+
+											.icon
+												position: absolute
+												left: 4px
+												height: 24px
+												line-height: 24px
+
+										button, input
+											height: 24px
+											box-sizing: border-box
+											vertical-align: middle
+											margin-right: 5px
+											border: 1px solid #e7e7eb
+											outline: none
+
+										.preview
+											width: 24px
+
+										input
+											position: relative
+											width: 100px
+											padding-left: 20px
+											font-size: 15px
+
+										.js_ok
+											padding: 0 24px
+											border-radius: 4px
+											background-color: #fff
+											cursor: pointer
+
+											&:hover
+												border-color: #dadbe0
+								/* toolselect */
+								.weui_edui_toolselect_list
+									background: url(//unpkg.com/vue-weui-ueditor/static/themes/default/images/sparator.png) repeat-y 25px #fff
+									ul
+										margin: 0
+										padding: 0 2px
+
+										li
+											width: 100%
+											position: relative
+											padding: 4px
+											padding-left: 30px
+											margin: 0
+											font-size: 12px
+											box-sizing: border-box
+											border: 1px solid transparent
+
+											&:hover
+												background-color: #f4f5f9
+												border-color: #e7e7eb
+												cursor: default
+
+											.checked
+												width: 20px
+												height: 20px
+												position: absolute
+												left: 0
+												top: 2px
+												background: url(//unpkg.com/vue-weui-ueditor/static/themes/default/images/icons-all29f4d4.gif) no-repeat 6px -205px
+								/* toolinput */
+								
+								&.toolinput
+									.weui_edui_input
+										width: 32px
+										height: 20px
+										border: none
+										outline: none
+										background-color: transparent
+									&.toolitem_fontsize
+										.weui_edui_toolselect_list
+											max-height: 194px
+											overflow: auto
+											background-image: none
+											ul
+												li
+													padding-left: 4px
+													color: #000
+													&:hover
+														background-color: #fff5d4;
+														border: 1px solid #dcac6c;
+
+								&.toolitem_undo .weui_edui_icon
+									background-position: 0 -168px
+								&.toolitem_redo .weui_edui_icon
+									background-position: 0 -198px
+								&.toolitem_fontsize .weui_edui_icon
+									background-image: none
+								&.toolitem_blockquote .weui_edui_icon
+									background-position: 0 -318px
+								&.toolitem_horizontal .weui_edui_icon
+									background-position: 0 -679px
+								&.toolitem_removeformat .weui_edui_icon
+									background-position: 0 -890px
+								&.toolitem_formatmatch .weui_edui_icon
+									background-position: 0 -859px
+								&.toolitem_bold .weui_edui_icon
+									background-position: 0 -228px
+								&.toolitem_italic .weui_edui_icon
+									background-position: 0 -258px
+								&.toolitem_underline .weui_edui_icon
+									background-position: 0 -288px
+								&.toolitem_forecolor .weui_edui_icon
+									background-position: 0 -348px
+								&.toolitem_backcolor .weui_edui_icon
+									background-position: 0 -378px
+								&.toolitem_indent .weui_edui_icon
+									background-position: 0 -1107px
+								&.toolitem_justifyleft .weui_edui_icon
+									background-position: 0 -408px
+								&.toolitem_justifycenter .weui_edui_icon
+									background-position: 0 -438px
+								&.toolitem_justifyright .weui_edui_icon
+									background-position: 0 -468px
+								&.toolitem_justifyjustify .weui_edui_icon
+									background-position: 0 -499px
+								&.toolitem_rowspacingtop .weui_edui_icon
+									background-position: 0 -649px
+								&.toolitem_rowspacingbottom .weui_edui_icon
+									background-position: 0 -619px
+								&.toolitem_lineheight .weui_edui_icon
+									background-position: 0 -589px
+								&.toolitem_orderedlist .weui_edui_icon
+									background-position: 0 -529px
+								&.toolitem_unorderedlist .weui_edui_icon
+									background-position: 0 -559px
+								&.toolitem_imagefloatnone .weui_edui_icon
+									background-position: 0 -950px
+								&.toolitem_imagefloatleft .weui_edui_icon
+									background-position: 0 -980px
+								&.toolitem_imagefloatright .weui_edui_icon
+									background-position: 0 -1010px
+								&.toolitem_imagefloatcenter .weui_edui_icon
+									background-position: 0 -1040px
+							.toolseparator
+								width: 1px
+								height: 20px
+								display: inline-block
+								background-color: #e7e7eb
+								margin: 4px 4px
+								vertical-align: middle
+					.weui__box_shadow
+						position: absolute
+						top: 0
+						left: 0
+						width: 100%
+						height: 100%
+						margin: 1px
+						background-color: #fff
+						opacity: .5
+						z-index: 2
+					
+		.weui_editor_bd
+			position: relative
+			z-index: 1
+			border-left: 1px solid #e7e7eb
+			border-right: 1px solid #e7e7eb
+			border-bottom: 1px solid #e7e7eb
+			.weui_editor_body
+				padding: 0 40px
+		.weui_editor_ft
+			position: relative
+	
