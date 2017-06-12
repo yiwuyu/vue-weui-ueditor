@@ -51,7 +51,7 @@
 	</div>	
 </template>
 <script type="text/ecmascript-6">
-	import clickoutside from '@/utils/clickoutside';
+	import clickoutside from '../../utils/clickoutside';
 	import ToolInput from './ToolInput';
 	import ToolButton from './ToolButton';
 	import ToolSelect from './ToolSelect';

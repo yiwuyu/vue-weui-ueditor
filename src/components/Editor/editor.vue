@@ -34,10 +34,10 @@
 <script type="text/ecmascript-6">
 	import weuiToolbar from '../Toolbar';
 	import './editor.stylus';
-	import {selectOptions, ueConfig} from '@/config/config';
-	import '@/config/ueditor.config';
-	import '@/static/ueditor.all.min';
-	import '@/static/lang/zh-cn/zh-cn';
+	import {selectOptions, ueConfig} from '../../config/config';
+	import '../../config/ueditor.config';
+	import '../../static/ueditor.all.min';
+	import '../../static/lang/zh-cn/zh-cn';
 	export default {
 		name: 'weui-editor-component',
 		components: {weuiToolbar},

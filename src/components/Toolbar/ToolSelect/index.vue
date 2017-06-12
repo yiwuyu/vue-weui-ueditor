@@ -26,7 +26,7 @@
 </template>
 <script type="text/ecmascript-6">
 	import Tooltip from '../../Tooltip';
-	import clickoutside from '@/utils/clickoutside';
+	import clickoutside from '../../../utils/clickoutside';
 	export default {
 		name: 'weui-editor-toolselect-component',
 		props: {

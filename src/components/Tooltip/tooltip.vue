@@ -17,8 +17,8 @@
 </template>
 <script type="text/ecmascript-6">
 	import './tooltip.css';
-	import Popper from '@/components/base/popper';
-	import {oneOf} from '@/utils/assist';
+	import Popper from '../base/popper';
+	import {oneOf} from '../../utils/assist';
 
   const prefixCls = 'weui-tooltip';
 
