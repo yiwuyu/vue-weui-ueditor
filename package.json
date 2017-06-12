@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A Wrapper of UEditor for vue 2.x with mp.weixin weui",
   "author": "yiwuyu <yiwuyu.it@gmail.com>",
-  "private": true,
   "keyword": [
     "vue-weui-ueditor",
     "weui",
@@ -33,7 +32,8 @@
   },
   "files": [
     "dist",
-    "static"
+    "static",
+    "src"
   ],
   "dependencies": {
     "vue": "^2.3.3",
