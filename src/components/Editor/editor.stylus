@@ -1,4 +1,6 @@
 .weui_editor
+	ul
+		list-style: none
 	.weui_edui_wrap
 		.weui_editor_hd
 			position: relative

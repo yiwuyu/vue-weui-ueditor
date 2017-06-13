@@ -13,7 +13,7 @@
 						:selectOptions="selectOptions"
 						:listVisible="listVisible"
 						:maskVisible="toolbarMaskVisible"
-						@on-editor-execCommand="onExecCommand"
+						@on-editor-execCommand="execCommand"
 						@on-maskvisible-change="onMaskVisibleChange"
 					>
 					</weuiToolbar>
@@ -39,7 +39,7 @@
 	import '../../static/ueditor.all.min';
 	import '../../static/lang/zh-cn/zh-cn';
 	export default {
-		name: 'weui-editor-component',
+		name: 'weui-ueditor',
 		components: {weuiToolbar},
 		props: {
 			content: {
@@ -104,15 +104,15 @@
 		methods: {
 			init() {
 				console.info('<editor-component> inited');
-				this.onSetContent();
-			},
-			onSetContent() {
 				setTimeout(() => {
-					this.editor.setContent(this.content || this._content || '');
+					this.setContent();
 					this.$emit('on-editor-ready');
 				}, 800);
 			},
-			onExecCommand(name, value, dir) {
+			setContent(value) {
+				this.editor.setContent(value || this.content || this._content || '');
+			},
+			execCommand(name, value, dir) {
 				this.editor.execCommand(name, value, dir);
 			},
 			onScroll() {
@@ -130,9 +130,9 @@
 					console.warn(e);
 				}
 			},
-			getContent(txt) {
-				txt = txt || 'getContent';
-				return this.editor[txt]();
+			getContent(type, fn) {
+				type = type || 'Content';
+				return this.editor[`get${type}`](fn);
 			},
 			/**
 			 * 监听ueditor 编辑器内容更改，返回给editor-component

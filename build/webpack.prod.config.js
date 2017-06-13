@@ -1,39 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var vueLoaderConfig = require('./vue-loader.conf')
-
 
 function resolve(dir) {
-	return path.join(__dirname, dir);
+  return path.join(__dirname, dir);
 }
 
-var cssLoader = {
-	loader: 'css-loader',
-	options: {
-		minimize: true,
-		sourceMap: true
-	}
-};
-
-function generateLoaders (loader, loaderOptions) {
-  var loaders = [cssLoader]
-  if (loader) {
-    loaders.push({
-      loader: loader + '-loader',
-      options: Object.assign({}, loaderOptions, {
-        sourceMap: !0
-      })
-    })
-  }
-
-  return ExtractTextPlugin.extract({
-    use: loaders,
-    fallback: 'vue-style-loader'
-  })
-}
-
-module.exports = {
+var config = {
 	entry: {
 		index: './src/index.js'
 	},
@@ -53,17 +26,10 @@ module.exports = {
 			amd: 'vue'
 		}
 	},
-	resolve: {
-		extensions: ['.js', '.vue', '.json'],
-		alias: {
-			'vue$': 'vue/dist/vue.esm.js',
-			'@': resolve('src')
-		}
-	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|vue)$/,
+				test: /\.vue$/,
 				exclude: /node_modules/,
 				loader: 'eslint-loader',
 				enforce: 'pre',
@@ -75,18 +41,82 @@ module.exports = {
 				test: /\.vue$/,
 				exclude: /node_modules/,
 				loader: 'vue-loader',
-				options: vueLoaderConfig
+				options: {
+					loaders: {
+						'stylus': 'vue-style-loader!css-loader!stylus-loader'
+					}
+				}
 			}, {
 				test: /\.js$/,
+				exclude: /node_modules/,
 				loader: 'babel-loader'
 			}, {
 				test: /\.css$/,
-				use: generateLoaders()
+				loaders: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [{
+					  loader: 'css-loader'
+					}, {
+					  loader: 'postcss-loader',
+					  options: {
+					    plugins: function () {
+					      return [
+					        require('autoprefixer')({
+					          browsers: ['last 3 versions']
+					        })
+					      ]
+					    }
+					  }
+					}]
+				})
 			}, {
 				test: /\.stylus$/,
-				use: generateLoaders('stylus')
+				exclude: /node_modules/,
+				loader: ExtractTextPlugin.extract({
+				  fallback: 'style-loader',
+				  use: [{
+				    loader: 'css-loader'
+				  }, {
+				    loader: 'postcss-loader',
+				    options: {
+				      plugins: function () {
+				        return [
+				          require('autoprefixer')({
+				            browsers: ['last 3 versions']
+				          })
+				        ];
+				      }
+				    }
+				  }, {
+				    loader: 'stylus-loader'
+				  }]
+				})
 			}
 		]
-	}
+	},
+	resolve: {
+		extensions: ['.js', '.css', '.stylus', '.vue'],
+		alias: {
+			'vue$': 'vue/dist/vue.common.js'
+		}
+	},
+	plugins: [
+		new ExtractTextPlugin({
+			filename: 'vue-weui-ueditor.min.css'
+		}),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': '"production"'
+		}),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+				drop_console: true
+			}
+		}),
+		new webpack.LoaderOptionsPlugin({
+			minimize: true
+		})
+	]
 };
 
+module.exports = config;
