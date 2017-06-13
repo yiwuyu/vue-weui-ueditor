@@ -5,7 +5,7 @@
 <p align="center">
 	<a href="https://github.com/yiwuyu/vue-weui-ueditor">
 		<img src="https://img.shields.io/badge/build-passing-brightgreen.svg" alt="">
-		<img src="https://img.shields.io/badge/npm-v2.3.4-blue.svg" alt="">
+		<img src="https://img.shields.io/badge/npm-v0.2.0-blue.svg" alt="">
 		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="">
 	</a>
 </p>
