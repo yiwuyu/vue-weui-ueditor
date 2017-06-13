@@ -36,6 +36,7 @@ $ cnpm i vue-weui-ueditor --S
 <script>
 	import weuiUEditor from 'vue-weui-ueditor';
 
+	import 'vue-weui-ueditor/dist/vue-weui-ueditor.min.css';
 	export default {
 		name: 'app',
 		components: {
@@ -56,12 +57,14 @@ $ cnpm i vue-weui-ueditor --S
 
 ### Method
 | name | description | params |
+| --- | --- | -- |
 | setContent | 设置编辑器内容 | (String html)
 | execCommand | 执行编辑器cmd，用于拓展 [UEditor API doc](http://ueditor.baidu.com/doc/) | (String cmdName, argv)
 | getContent | 获取编辑内容. type['Content'(defalut), 'AllHtml', 'PlainTxt']，当默认值时，可以通过参数定义编辑器内置的判空规则 | (String type, Function fn) |
 
 ### Config
 | key | description | type | optional | default |
+| --- | ---- | -- | --- | --- |
 | selectOptions | 下拉的选择按钮 | Object | {'rowspacing', 'lineheight', 'orderedlist', 'unorderedlist', 'fontsize'} | 见optional
 
 待扩展
