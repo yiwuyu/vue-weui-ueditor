@@ -1,6 +1,6 @@
 {
   "name": "vue-weui-ueditor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Wrapper of UEditor for vue 2.x with mp.weixin weui",
   "author": "yiwuyu <yiwuyu.it@gmail.com>",
   "keyword": [
