@@ -14,6 +14,9 @@
 
 Weui-ueditor is a simple and beautiful rich editor based on [ueditor](http://ueditor.baidu.com/website/), and with weui.
 
+## Demo
+<img src="https://www.lagou.com/i/image/M00/39/4B/CgpEMllFQOaAGoH1AEKppVWnNK4696.gif" alt="">
+
 ## Install
 
 ```
