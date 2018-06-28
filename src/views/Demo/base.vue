@@ -1,6 +1,10 @@
 <template>
-	<div class="">
+	<div
+		class=""
+		style="margin-top: 200px;"
+	>
 		<weuiEditor
+			:editorTopOffset="200"
 		></weuiEditor>
 	</div>
 </template>

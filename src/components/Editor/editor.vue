@@ -19,7 +19,7 @@
 					</weuiToolbar>
 				</div>
 			</div>
-			<div class="weui_editor_bd">
+			<div class="weui_editor_bd" ref="editorBody">
 				<slot class="weui_editor_extra" name="header"></slot>
 				<div class="weui_editor_body">
 					<div ref="editor"></div>
@@ -116,15 +116,15 @@
 				this.editor.execCommand(name, value, dir);
 			},
 			onScroll() {
-				const H = document.body.scrollTop;
-				const toolbarboxWrapCss = getComputedStyle(this.toolbar.parentNode, false);
-				const toolbarCss = getComputedStyle(this.toolbar, false);
+				const toolbar = this.toolbar.getBoundingClientRect();
+				const editorBody = this.$refs.editorBody.getBoundingClientRect();
 				try {
-					if (H > this.editorTopOffset) {
-						this.toolbar.style.cssText = `top:${this.editorTopOffset}px;position:fixed;width:${toolbarboxWrapCss.width}`;
-						this.toolbar.parentNode.style.cssText = `height:${toolbarCss.height}`;
-					} else {
+					if (editorBody.top - toolbar.top >= toolbar.height) {
 						this.toolbar.style.cssText = this.toolbar.parentNode.style.cssText = '';
+					}
+					if (toolbar.top < this.editorTopOffset) {
+						this.toolbar.style.cssText = `top:${this.editorTopOffset}px;position:fixed;width:${editorBody.width}px`;
+						this.toolbar.parentNode.style.cssText = `height:${toolbar.height}px`;
 					}
 				} catch (e) {
 					console.warn(e);
@@ -175,12 +175,41 @@
 				}.bind(this));
 			},
 			bindScrollEvent() {
+				this.offScrollEvent();
 				if (window.addEventListener) {
 					window.addEventListener('scroll', this.onScroll, false);
 				} else if (window.attachEvent) {
 					window.attachEvent('scroll', this.onScroll);
 				} else {
 					window['onscroll'] = this.onScroll;
+				}
+			},
+			offScrollEvent() {
+				if (window.removeEventListener) {
+					window.removeEventListener('scroll', this.onScroll, false);
+				} else if (window.detachEvent) {
+					window.detachEvent('scroll', this.onScroll);
+				} else {
+					window['onscroll'] = function() {};
+				}
+			},
+			bindResizeEvent() {
+				this.offResizeEvent();
+				if (window.addEventListener) {
+					window.addEventListener('resize', this.onScroll, false);
+				} else if (window.attachEvent) {
+					window.attachEvent('resize', this.onScroll);
+				} else {
+					window['onresize'] = this.onScroll;
+				}
+			},
+			offResizeEvent() {
+				if (window.removeEventListener) {
+					window.removeEventListener('resize', this.onScroll, false);
+				} else if (window.detachEvent) {
+					window.detachEvent('resize', this.onScroll);
+				} else {
+					window['onresize'] = function() {};
 				}
 			},
 			onFocus() {
@@ -207,8 +236,24 @@
 					this.onSelectionChange();
 					this.onFocus();
 					this.bindScrollEvent();
+					this.bindResizeEvent();
 				});
 			});
+		},
+		beforeDestroy() {
+			console.log('beforeDestroy');
+			this.offScrollEvent();
+			this.offResizeEvent();
+		},
+		actived() {
+			console.log('active');
+			this.bindScrollEvent();
+			this.bindResizeEvent();
+		},
+		inactived() {
+			console.log('inactived');
+			this.offScrollEvent();
+			this.offResizeEvent();
 		}
 	};
 </script>

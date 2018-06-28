@@ -207,6 +207,8 @@
 									background-position: 0 -679px
 								&.toolitem_removeformat .weui_edui_icon
 									background-position: 0 -890px
+								&.toolitem_unlink .weui_edui_icon
+									background-position: 0 -920px
 								&.toolitem_formatmatch .weui_edui_icon
 									background-position: 0 -859px
 								&.toolitem_bold .weui_edui_icon
