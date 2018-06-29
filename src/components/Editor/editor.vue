@@ -130,6 +130,18 @@
 					console.warn(e);
 				}
 			},
+			onResize() {
+				try {
+					if (this.toolbar.style.cssText) {
+						const toolbar = this.toolbar.getBoundingClientRect();
+						const editorBody = this.$refs.editorBody.getBoundingClientRect();
+						this.toolbar.style.cssText = `top:${this.editorTopOffset}px;position:fixed;width:${editorBody.width}px`;
+						this.toolbar.parentNode.style.cssText = `height:${toolbar.height}px`;
+					}
+				} catch (e) {
+					console.warn(e);
+				}
+			},
 			getContent(type, fn) {
 				type = type || 'Content';
 				return this.editor[`get${type}`](fn);
@@ -196,18 +208,18 @@
 			bindResizeEvent() {
 				this.offResizeEvent();
 				if (window.addEventListener) {
-					window.addEventListener('resize', this.onScroll, false);
+					window.addEventListener('resize', this.onResize, false);
 				} else if (window.attachEvent) {
-					window.attachEvent('resize', this.onScroll);
+					window.attachEvent('resize', this.onResize);
 				} else {
-					window['onresize'] = this.onScroll;
+					window['onresize'] = this.onResize;
 				}
 			},
 			offResizeEvent() {
 				if (window.removeEventListener) {
-					window.removeEventListener('resize', this.onScroll, false);
+					window.removeEventListener('resize', this.onResize, false);
 				} else if (window.detachEvent) {
-					window.detachEvent('resize', this.onScroll);
+					window.detachEvent('resize', this.onResize);
 				} else {
 					window['onresize'] = function() {};
 				}
